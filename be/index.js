@@ -2,14 +2,16 @@ const express = require("express");
 const Razorpay = require("razorpay");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors("*"));
+console.log(process.env.RAZORPAY_KEY_SECRECT, process.env.RAZORPAY_KEY_ID,);
 
 const razorpay = new Razorpay({
-  key_id: "", // Replace with your Razorpay Key ID
-  key_secret: "", // Replace with your Razorpay Key Secret
+  key_id: process.env.RAZORPAY_KEY_ID, 
+  key_secret:process.env.RAZORPAY_KEY_SECRECT
 });
 
 // API to create an order
